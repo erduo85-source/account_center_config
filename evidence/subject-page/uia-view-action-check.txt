@@ -1,0 +1,6 @@
+﻿WINDOW_TITLE: 主体管理 - 平台服务中心 和另外 24 个页面 - 个人 - Microsoft​ Edge
+BEFORE_URL: https://platform.dobest.com/#/system/sdk/subject
+ACTION: focus-enter
+FIRST_VIEW_PATTERNS: InvokePatternIdentifiers.Pattern, ScrollItemPatternIdentifiers.Pattern
+AFTER_URL: https://platform.dobest.com/#/system/sdk/subject
+DOCUMENTS: 主体管理 - 平台服务中心
