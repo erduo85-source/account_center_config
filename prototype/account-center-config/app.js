@@ -62,6 +62,8 @@ let pendingGameDropIndex = null;
 let draggedFaqIndex = null;
 let pendingFaqDropIndex = null;
 let editingFaqIndex = null;
+const MAX_PROTOCOLS = 10;
+const MAX_FAQS = 20;
 
 function icon(name) {
   return icons[name] || "";
@@ -164,7 +166,7 @@ function renderBrand() {
       <div class="protocol-list" id="protocolList">
         ${protocols.map((item, index) => protocolFieldRow(item, index)).join("")}
       </div>
-      <button class="full-add-button" data-action="add-protocol">+ 添加自定义协议</button>
+      ${protocols.length < MAX_PROTOCOLS ? '<button class="full-add-button" data-action="add-protocol">+ 添加自定义协议</button>' : ""}
     </div>`;
 }
 
@@ -332,7 +334,7 @@ function renderHelp() {
           </tbody>
         </table>
       </div>
-      <button class="full-add-button" data-action="add-faq">+ 添加FAQ</button>
+      ${faqs.length < MAX_FAQS ? '<button class="full-add-button" data-action="add-faq">+ 添加FAQ</button>' : ""}
       <section class="support-card">
         <h3>客服</h3>
         <div class="brand-field-row support-row">
@@ -451,12 +453,20 @@ function readGameForm(oldGame = {}) {
 }
 
 function addProtocolRow() {
+  if (protocols.length >= MAX_PROTOCOLS) {
+    showToast("自定义协议最多添加10个");
+    return;
+  }
   protocols.push({ name: "", url: "" });
   renderModule("brand");
   showToast("已添加一行自定义协议");
 }
 
 function addFaqRow() {
+  if (faqs.length >= MAX_FAQS) {
+    showToast("FAQ最多添加20个");
+    return;
+  }
   faqs.push({ order: String(faqs.length + 1), question: "", answer: "" });
   editingFaqIndex = faqs.length - 1;
   renderModule("help");
