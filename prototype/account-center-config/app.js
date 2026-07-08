@@ -59,6 +59,9 @@ let currentModule = "brand";
 let pendingModalAction = null;
 let draggedGameIndex = null;
 let pendingGameDropIndex = null;
+let draggedFaqIndex = null;
+let pendingFaqDropIndex = null;
+let editingFaqIndex = null;
 
 function icon(name) {
   return icons[name] || "";
@@ -197,21 +200,18 @@ function renderPassport() {
       ${abilityCard({
         icon: "lock",
         title: "账密登录",
-        desc: "账号密码登录",
         sub: "开启后，账号中心将支持密码重置、设置和修改功能",
         rows: [{ label: "账密登录", on: false }]
       })}
       ${abilityCard({
         icon: "phone",
         title: "绑定手机",
-        desc: "手机能力",
         sub: "开启后，账号中心将支持手机绑定、换绑及通过手机找回账号名",
         rows: [{ label: "登录手机", on: true }, { label: "安全手机", on: true }]
       })}
       ${abilityCard({
         icon: "mail",
         title: "绑定邮箱",
-        desc: "邮箱能力",
         sub: "开启后，账号中心将支持邮箱绑定、换绑及通过邮箱找回账号名",
         rows: [{ label: "安全邮箱", on: true }]
       })}
@@ -232,7 +232,7 @@ function abilityCard(data) {
         ${data.tag ? `<span class="tag">${data.tag}</span>` : ""}
       </div>
     </div>
-    <div class="ability-desc">${data.desc}<small title="${escapeHtml(data.sub)}">${data.sub}</small></div>
+    <div class="ability-desc"><small title="${escapeHtml(data.sub)}">${data.sub}</small></div>
     <div class="ability-settings">${data.rows.map(settingRow).join("")}</div>
   </article>`;
 }
@@ -326,14 +326,9 @@ function renderHelp() {
       <h3>FAQ</h3>
       <div class="table-wrap">
         <table class="data-table faq-table">
-          <thead><tr><th>排序</th><th>问题</th><th>答案摘要</th><th>操作</th></tr></thead>
+          <thead><tr><th></th><th>排序</th><th>问题</th><th>答案摘要</th><th>操作</th></tr></thead>
           <tbody>
-            ${faqs.map((item, index) => `<tr>
-              <td>${item.order}</td>
-              <td>${item.question ? escapeHtml(item.question) : '<input class="inline-input" placeholder="请输入问题" />'}</td>
-              <td>${item.answer ? escapeHtml(item.answer) : '<input class="inline-input" placeholder="请输入答案摘要" />'}</td>
-              <td><div class="action-links"><button class="btn link" disabled>编辑</button><button class="btn link danger-link" disabled>删除</button></div></td>
-            </tr>`).join("")}
+            ${faqs.map(faqRow).join("")}
           </tbody>
         </table>
       </div>
@@ -348,6 +343,20 @@ function renderHelp() {
         </div>
       </section>
     </div>`;
+}
+
+function faqRow(item, index) {
+  const isEditing = editingFaqIndex === index;
+  return `<tr data-faq-index="${index}">
+    <td class="drag-cell" draggable="true" title="拖拽排序" aria-label="拖拽排序">⋮</td>
+    <td>${item.order}</td>
+    <td>${isEditing ? `<input class="inline-input faq-question-input" value="${escapeHtml(item.question)}" placeholder="请输入问题" />` : escapeHtml(item.question)}</td>
+    <td>${isEditing ? `<input class="inline-input faq-answer-input" value="${escapeHtml(item.answer)}" placeholder="请输入答案摘要" />` : escapeHtml(item.answer)}</td>
+    <td><div class="action-links">
+      <button class="btn link" data-action="${isEditing ? "save-faq" : "edit-faq"}" data-index="${index}">${isEditing ? "保存" : "编辑"}</button>
+      <button class="btn link danger-link" data-action="delete-faq" data-index="${index}">删除</button>
+    </div></td>
+  </tr>`;
 }
 
 function renderModule(moduleKey) {
@@ -449,14 +458,23 @@ function addProtocolRow() {
 
 function addFaqRow() {
   faqs.push({ order: String(faqs.length + 1), question: "", answer: "" });
+  editingFaqIndex = faqs.length - 1;
   renderModule("help");
   showToast("已添加一行FAQ");
 }
 
-function clearGameDragState() {
-  document.querySelectorAll(".game-table tr").forEach((row) => {
+function clearDragState(selector) {
+  document.querySelectorAll(selector).forEach((row) => {
     row.classList.remove("is-dragging", "is-drop-before", "is-drop-after");
   });
+}
+
+function clearGameDragState() {
+  clearDragState(".game-table tr");
+}
+
+function clearFaqDragState() {
+  clearDragState(".faq-table tr");
 }
 
 function reorderGames(fromIndex, dropIndex) {
@@ -469,6 +487,53 @@ function reorderGames(fromIndex, dropIndex) {
   const adjustedDropIndex = fromIndex < boundedDropIndex ? boundedDropIndex - 1 : boundedDropIndex;
   games.splice(adjustedDropIndex, 0, moved);
   return true;
+}
+
+function reorderFaqs(fromIndex, dropIndex) {
+  if (fromIndex === null || dropIndex === null) return false;
+  if (fromIndex < 0 || fromIndex >= faqs.length) return false;
+  const boundedDropIndex = Math.max(0, Math.min(dropIndex, faqs.length));
+  if (fromIndex === boundedDropIndex || fromIndex + 1 === boundedDropIndex) return false;
+
+  const [moved] = faqs.splice(fromIndex, 1);
+  const adjustedDropIndex = fromIndex < boundedDropIndex ? boundedDropIndex - 1 : boundedDropIndex;
+  faqs.splice(adjustedDropIndex, 0, moved);
+  faqs.forEach((item, index) => {
+    item.order = String(index + 1);
+  });
+  if (editingFaqIndex !== null) {
+    editingFaqIndex = adjustedDropIndex;
+  }
+  return true;
+}
+
+function saveFaqRow(index) {
+  const row = document.querySelector(`.faq-table tbody tr[data-faq-index="${index}"]`);
+  if (!row) return;
+  faqs[index].question = row.querySelector(".faq-question-input")?.value.trim() || "";
+  faqs[index].answer = row.querySelector(".faq-answer-input")?.value.trim() || "";
+  editingFaqIndex = null;
+  renderModule("help");
+  showToast("已保存FAQ");
+}
+
+function openDeleteFaqModal(index) {
+  showModal({
+    title: "确认删除",
+    body: `<p>请确认是否删除该信息</p>`,
+    confirmText: "确认",
+    mode: "compact",
+    onConfirm: () => {
+      faqs.splice(index, 1);
+      faqs.forEach((item, itemIndex) => {
+        item.order = String(itemIndex + 1);
+      });
+      editingFaqIndex = null;
+      renderModule("help");
+      showToast("已删除FAQ");
+      hideModal();
+    }
+  });
 }
 
 function openAddGameModal() {
@@ -543,6 +608,12 @@ function bindEvents() {
       if (actionName === "add-game") openAddGameModal();
       if (actionName === "edit-game") openEditGameModal(Number(action.dataset.index));
       if (actionName === "delete-game") openDeleteGameModal(Number(action.dataset.index));
+      if (actionName === "edit-faq") {
+        editingFaqIndex = Number(action.dataset.index);
+        renderModule("help");
+      }
+      if (actionName === "save-faq") saveFaqRow(Number(action.dataset.index));
+      if (actionName === "delete-faq") openDeleteFaqModal(Number(action.dataset.index));
       return;
     }
 
@@ -564,49 +635,75 @@ function bindEvents() {
   document.addEventListener("dragstart", (event) => {
     const handle = event.target.closest(".drag-cell");
     if (!handle) return;
-    const row = handle.closest("tr[data-game-index]");
-    if (!row) return;
-    draggedGameIndex = Number(row.dataset.gameIndex);
-    pendingGameDropIndex = draggedGameIndex;
-    row.classList.add("is-dragging");
+    const gameRow = handle.closest("tr[data-game-index]");
+    const faqRow = handle.closest("tr[data-faq-index]");
+    if (gameRow) {
+      draggedGameIndex = Number(gameRow.dataset.gameIndex);
+      pendingGameDropIndex = draggedGameIndex;
+      gameRow.classList.add("is-dragging");
+      event.dataTransfer.setData("text/plain", String(draggedGameIndex));
+    } else if (faqRow) {
+      draggedFaqIndex = Number(faqRow.dataset.faqIndex);
+      pendingFaqDropIndex = draggedFaqIndex;
+      faqRow.classList.add("is-dragging");
+      event.dataTransfer.setData("text/plain", String(draggedFaqIndex));
+    } else {
+      return;
+    }
     event.dataTransfer.effectAllowed = "move";
-    event.dataTransfer.setData("text/plain", String(draggedGameIndex));
   });
 
   document.addEventListener("dragover", (event) => {
-    if (draggedGameIndex === null) return;
-    const row = event.target.closest(".game-table tbody tr[data-game-index]");
+    if (draggedGameIndex === null && draggedFaqIndex === null) return;
+    const row = draggedGameIndex !== null
+      ? event.target.closest(".game-table tbody tr[data-game-index]")
+      : event.target.closest(".faq-table tbody tr[data-faq-index]");
     if (!row) return;
     event.preventDefault();
-    const targetIndex = Number(row.dataset.gameIndex);
+    const targetIndex = Number(draggedGameIndex !== null ? row.dataset.gameIndex : row.dataset.faqIndex);
     const rect = row.getBoundingClientRect();
     const dropAfter = event.clientY > rect.top + rect.height / 2;
-    pendingGameDropIndex = targetIndex + (dropAfter ? 1 : 0);
-    clearGameDragState();
-    document.querySelector(`.game-table tbody tr[data-game-index="${draggedGameIndex}"]`)?.classList.add("is-dragging");
+    if (draggedGameIndex !== null) {
+      pendingGameDropIndex = targetIndex + (dropAfter ? 1 : 0);
+      clearGameDragState();
+      document.querySelector(`.game-table tbody tr[data-game-index="${draggedGameIndex}"]`)?.classList.add("is-dragging");
+    } else {
+      pendingFaqDropIndex = targetIndex + (dropAfter ? 1 : 0);
+      clearFaqDragState();
+      document.querySelector(`.faq-table tbody tr[data-faq-index="${draggedFaqIndex}"]`)?.classList.add("is-dragging");
+    }
     row.classList.add(dropAfter ? "is-drop-after" : "is-drop-before");
     event.dataTransfer.dropEffect = "move";
   });
 
   document.addEventListener("drop", (event) => {
-    if (draggedGameIndex === null) return;
-    const table = event.target.closest(".game-table");
+    if (draggedGameIndex === null && draggedFaqIndex === null) return;
+    const table = event.target.closest(".game-table, .faq-table");
     if (!table) return;
     event.preventDefault();
-    const changed = reorderGames(draggedGameIndex, pendingGameDropIndex);
+    const changed = table.classList.contains("game-table")
+      ? reorderGames(draggedGameIndex, pendingGameDropIndex)
+      : reorderFaqs(draggedFaqIndex, pendingFaqDropIndex);
+    const isFaqDrop = table.classList.contains("faq-table");
     draggedGameIndex = null;
     pendingGameDropIndex = null;
+    draggedFaqIndex = null;
+    pendingFaqDropIndex = null;
     clearGameDragState();
+    clearFaqDragState();
     if (changed) {
-      renderModule("game");
-      showToast("已更新游戏排序，请点击保存提交");
+      renderModule(isFaqDrop ? "help" : "game");
+      showToast(isFaqDrop ? "已更新FAQ排序，请点击保存提交" : "已更新游戏排序，请点击保存提交");
     }
   });
 
   document.addEventListener("dragend", () => {
     draggedGameIndex = null;
     pendingGameDropIndex = null;
+    draggedFaqIndex = null;
+    pendingFaqDropIndex = null;
     clearGameDragState();
+    clearFaqDragState();
   });
 
   document.getElementById("backToList").addEventListener("click", () => setView("list"));

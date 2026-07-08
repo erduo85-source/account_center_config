@@ -990,7 +990,7 @@ button {
 }
 
 .ability-desc {
-  min-height: 50px;
+  min-height: 38px;
   color: #4b5563;
   line-height: 20px;
   font-size: 13px;
@@ -999,7 +999,7 @@ button {
 .ability-desc small {
   display: block;
   width: calc(100% + 24px);
-  margin-top: 8px;
+  margin-top: 0;
   color: #6b7280;
   font-size: 10px;
   line-height: 18px;
@@ -1162,20 +1162,24 @@ button {
   cursor: grabbing;
 }
 
-.game-table tbody tr {
+.game-table tbody tr,
+.faq-table tbody tr {
   transition: background 0.15s ease;
 }
 
-.game-table tbody tr.is-dragging {
+.game-table tbody tr.is-dragging,
+.faq-table tbody tr.is-dragging {
   opacity: 0.48;
   background: #eef4ff;
 }
 
-.game-table tbody tr.is-drop-before td {
+.game-table tbody tr.is-drop-before td,
+.faq-table tbody tr.is-drop-before td {
   box-shadow: inset 0 2px 0 #2f7bff;
 }
 
-.game-table tbody tr.is-drop-after td {
+.game-table tbody tr.is-drop-after td,
+.faq-table tbody tr.is-drop-after td {
   box-shadow: inset 0 -2px 0 #2f7bff;
 }
 
@@ -1317,15 +1321,25 @@ button {
 }
 
 .faq-table th:nth-child(1) {
-  width: 84px;
+  width: 36px;
 }
 
 .faq-table th:nth-child(2) {
+  width: 72px;
+}
+
+.faq-table th:nth-child(3) {
   width: 34%;
 }
 
-.faq-table th:nth-child(4) {
+.faq-table th:nth-child(5) {
   width: 150px;
+}
+
+.faq-table td:nth-child(3),
+.faq-table td:nth-child(4) {
+  overflow: visible;
+  text-overflow: clip;
 }
 
 .support-card {
