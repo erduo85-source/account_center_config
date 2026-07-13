@@ -1,0 +1,263 @@
+{
+  "validation": {
+    "initial": {
+      "region": "国内",
+      "activeTab": "域名配置",
+      "heading": "国内通行证",
+      "activeDomainMenu": "国内通行证",
+      "groupTitles": [
+        "核心域名:",
+        "非核心域名:",
+        "CAID域名:",
+        "广告域名:"
+      ],
+      "fieldValues": [
+        "https://sdkcore.yokagames.com",
+        "https://sdkcore.yokagames.com",
+        "https://sdknoncore.yokagames.com",
+        "https://sdknoncore.yokagames.com",
+        "https://sdknoncore.yokagames.com",
+        "https://sdk-ad.dobest.cn"
+      ]
+    },
+    "account": {
+      "activeTab": "账号中心",
+      "activeModule": "品牌与合规"
+    },
+    "domesticPassport": {
+      "heading": "通行证能力",
+      "cards": [
+        {
+          "title": "设置密码",
+          "checks": []
+        },
+        {
+          "title": "绑定手机",
+          "checks": [
+            "登录手机",
+            "安全手机"
+          ]
+        },
+        {
+          "title": "绑定邮箱",
+          "checks": []
+        }
+      ]
+    },
+    "domesticGame": {
+      "heading": "游戏配置",
+      "headers": [
+        "",
+        "游戏",
+        "appid",
+        "订单查询",
+        "账号找回",
+        "最近更新时间",
+        "最近更新人",
+        "操作"
+      ]
+    },
+    "domesticGameModal": {
+      "title": "接入其他游戏",
+      "labels": [
+        "项目选择 *i",
+        "展示游戏名 *i",
+        "关联功能 *i",
+        "验证苹果订单i",
+        "苹果包名i",
+        "KeyIDi",
+        "IssuerIDi",
+        "PrivateKeyi"
+      ]
+    },
+    "overseas": {
+      "region": "海外",
+      "activeTab": "域名配置",
+      "heading": "海外通行证",
+      "subject": "PLAYBEST",
+      "fieldCount": 6
+    },
+    "overseasSite": {
+      "activeTab": "账号中心",
+      "activeModule": "网站信息",
+      "selectedLanguages": [
+        "简中",
+        "繁中",
+        "英语"
+      ],
+      "rowBadges": [
+        [
+          "简中",
+          "繁中",
+          "英语"
+        ],
+        [
+          "简中",
+          "繁中",
+          "英语"
+        ],
+        [
+          "简中",
+          "繁中",
+          "英语"
+        ],
+        [
+          "简中",
+          "繁中",
+          "英语"
+        ],
+        [
+          "简中",
+          "繁中",
+          "英语"
+        ],
+        [
+          "简中",
+          "繁中",
+          "英语"
+        ],
+        [
+          "简中",
+          "繁中",
+          "英语"
+        ],
+        [
+          "简中",
+          "繁中",
+          "英语"
+        ]
+      ]
+    },
+    "addMenuModal": {
+      "title": "添加导航菜单",
+      "labels": [
+        "展示文案 *",
+        "跳转链接",
+        "多语言展示"
+      ],
+      "placeholders": [
+        "请输入简中语言展示",
+        "请输入繁中语言展示",
+        "请输入英语语言展示"
+      ]
+    },
+    "editMenuModal": {
+      "title": "编辑导航菜单",
+      "labels": [
+        "展示文案 *",
+        "跳转链接",
+        "多语言展示"
+      ],
+      "placeholders": [
+        "请输入简中语言展示",
+        "请输入繁中语言展示",
+        "请输入英语语言展示"
+      ]
+    },
+    "overseasAllLanguages": {
+      "selectedLanguages": [
+        "简中",
+        "繁中",
+        "英语",
+        "韩语",
+        "泰语",
+        "越南语"
+      ],
+      "rowBadges": [
+        [
+          "简中",
+          "繁中",
+          "英语",
+          "韩语",
+          "泰语",
+          "越南语"
+        ],
+        [
+          "简中",
+          "繁中",
+          "英语",
+          "韩语",
+          "泰语",
+          "越南语"
+        ],
+        [
+          "简中",
+          "繁中",
+          "英语",
+          "韩语",
+          "泰语",
+          "越南语"
+        ],
+        [
+          "简中",
+          "繁中",
+          "英语",
+          "韩语",
+          "泰语",
+          "越南语"
+        ],
+        [
+          "简中",
+          "繁中",
+          "英语",
+          "韩语",
+          "泰语",
+          "越南语"
+        ],
+        [
+          "简中",
+          "繁中",
+          "英语",
+          "韩语",
+          "泰语",
+          "越南语"
+        ],
+        [
+          "简中",
+          "繁中",
+          "英语",
+          "韩语",
+          "泰语",
+          "越南语"
+        ],
+        [
+          "简中",
+          "繁中",
+          "英语",
+          "韩语",
+          "泰语",
+          "越南语"
+        ]
+      ]
+    },
+    "addMenuAllLanguagesModal": {
+      "placeholders": [
+        "请输入简中语言展示",
+        "请输入繁中语言展示",
+        "请输入英语语言展示",
+        "请输入韩语语言展示",
+        "请输入泰语语言展示",
+        "请输入越南语语言展示"
+      ]
+    },
+    "consoleMessages": [],
+    "pageErrors": [],
+    "failures": []
+  },
+  "metrics": {
+    "reference": "evidence/domain-config-figma-mcp-998-8322.png",
+    "local": "evidence/domain-config-local-1912.png",
+    "comparison_size": [
+      1912,
+      1140
+    ],
+    "mean_abs_delta": 6.1042,
+    "rms_delta": 31.2806,
+    "pixel_delta_percent": {
+      "gt_10": 5.6664,
+      "gt_20": 4.8746,
+      "gt_40": 3.4521,
+      "gt_80": 2.8579
+    }
+  }
+}

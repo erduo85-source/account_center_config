@@ -20,7 +20,13 @@
           <button class="active">项目管理</button>
         </nav>
         <div class="top-actions">
-          <button class="region-select">国内<span class="caret dark"></span></button>
+          <div class="region-switcher">
+            <button class="region-select" id="regionSelect" aria-haspopup="listbox" aria-expanded="false">国内<span class="caret dark"></span></button>
+            <div class="region-menu" id="regionMenu" role="listbox" aria-label="选择区域">
+              <button role="option" data-region="domestic" class="active">国内</button>
+              <button role="option" data-region="overseas">海外</button>
+            </div>
+          </div>
           <button class="icon-btn" title="文档" aria-label="文档" data-icon="file"></button>
           <button class="icon-btn" title="下载" aria-label="下载" data-icon="download"></button>
           <button class="icon-btn" title="通知" aria-label="通知" data-icon="bell"></button>
@@ -59,7 +65,7 @@
               <h1>主体管理</h1>
               <div class="filters">
                 <label>主体名称<input value="" placeholder="请输入主体名称" /></label>
-                <label>项目<select><option>国内</option></select></label>
+                <label>项目<select id="regionFilter"><option>国内</option></select></label>
                 <button class="btn primary">查询</button>
                 <button class="btn">重置</button>
               </div>
@@ -106,11 +112,11 @@
               <small>Upload</small>
             </button>
             <div class="subject-meta">
-              <h1>上海游碧曜</h1>
+              <h1 id="detailSubjectName">PLAYBEST</h1>
               <div class="meta-line">
-                <span>账号体系ID：<b>10001</b><i class="caret dark"></i></span>
-                <span>最近更新人：<b>王健</b></span>
-                <span>最近更新时间：<b>2026/11/22 17:00</b></span>
+                <span>账号体系ID：<b id="detailAccountId">10001</b><i class="caret dark"></i></span>
+                <span>最近更新人：<b id="detailOwner">王健</b></span>
+                <span>最近更新时间：<b id="detailUpdateTime">2026/11/22 17:00</b></span>
               </div>
             </div>
             <button class="btn primary save-btn" id="saveButton">保存</button>
@@ -122,19 +128,13 @@
               <strong>配置信息</strong>
             </div>
             <div class="tabs" role="tablist" aria-label="配置类型">
-              <button class="tab active">账号中心</button>
-              <button class="tab" disabled>其他示例</button>
+              <button class="tab active" data-config-type="domain">域名配置</button>
+              <button class="tab" data-config-type="account">账号中心</button>
               <button class="tab add-tab" disabled>＋ 新增配置类型</button>
             </div>
-            <div class="config-layout">
-              <nav class="module-menu" aria-label="账号中心二级配置">
-                <button class="module-item active" data-module="brand">品牌与合规</button>
-                <button class="module-item" data-module="passport">通行证能力</button>
-                <button class="module-item" data-module="game">游戏配置</button>
-                <button class="module-item" data-module="appeal">账号申诉</button>
-                <button class="module-item" data-module="cancel">账号注销</button>
-                <button class="module-item" data-module="help">问题帮助</button>
-              </nav>
+            <div class="domain-config-content" id="domainConfigContent"></div>
+            <div class="config-layout hidden" id="accountConfigContent">
+              <nav class="module-menu" id="moduleMenu" aria-label="账号中心二级配置"></nav>
               <div class="module-content" id="moduleContent"></div>
             </div>
           </div>

@@ -13,25 +13,45 @@ const icons = {
 };
 
 const subjects = [
-  ["10001", "上海游碧曜-代号月相", "游碧曜账号体系(10001)", "Y", "月相计划", "2026/11/22 17:00", "王健"],
-  ["10002", "上海游碧曜-vgame专属", "游碧曜账号体系(10001)", "V", "VGAME-国内", "2026/11/21 15:30", "王健"],
-  ["10003", "杭州游卡-三国杀OL专用", "游卡账号体系(10011)", "S", "三国杀OL", "2026/11/20 14:05", "江坤02"],
-  ["10004", "杭州分浪网络科技有限公司（忍村专用）", "分浪账号体系(10021)", "N", "忍村专用", "2026/11/19 18:16", "江坤02"],
-  ["10005", "成都樱臻", "樱臻账号体系(10031)", "M", "大梦勇士-App国内 代号：MA", "2026/11/18 11:42", "王健"],
-  ["10006", "上海祺雾", "祺雾账号体系(10041)", "Q", "勇者远征-国内", "2026/11/17 10:10", "王健"],
-  ["10007", "上海莱豪网络科技发展有限公司", "莱豪账号体系(10051)", "L", "花语恋 镇魂街王者归来-国内App", "2026/11/16 16:26", "江坤02"],
-  ["10008", "上海游碧曜-无logo", "游碧曜账号体系(10001)", "", "七塔：艾丽西亚之影-国内 代号：潮汐 GS SDK-PC", "2026/11/15 09:28", "王健"]
+  ["10001", "PLAYBEST", "海外账号体系(10001)", "P", "海外账号中心", "2026/11/22 17:00", "王健"],
+  ["10002", "PLAYBEST-VGAME", "海外账号体系(10001)", "V", "VGAME-海外", "2026/11/21 15:30", "王健"],
+  ["10003", "YOKA Global", "海外账号体系(10011)", "Y", "三国杀海外发行", "2026/11/20 14:05", "江坤02"],
+  ["10004", "PLAYBEST SEA", "海外账号体系(10021)", "S", "东南亚官网", "2026/11/19 18:16", "江坤02"]
+];
+
+const domesticSubjects = [
+  ["10001", "上海游碧曜", "游卡账号体系(10001)", "游", "三国杀移动版、三国杀OL", "2026/11/22 17:00", "王健"],
+  ["10002", "杭州游卡", "游卡账号体系(10001)", "卡", "欢乐三国杀、怒焰三国杀", "2026/11/21 15:30", "王健"],
+  ["10003", "海南游卡", "游卡账号体系(10011)", "海", "自在西游、指间山海", "2026/11/20 14:05", "江坤02"],
+  ["10004", "游卡网络", "游卡账号体系(10021)", "Y", "集团官网", "2026/11/19 18:16", "江坤02"]
 ];
 
 let games = [
-  { icon: "杀", name: "三国杀移动版", appid: "10100001", ext: "+2", appeal: true, recover: false, freeze: true, time: "2025-05-28 14:01:57", owner: "系统" },
-  { icon: "策", name: "三国杀一将成名", appid: "10100011", ext: "", appeal: false, recover: true, freeze: true, time: "2025-05-21 10:16:34", owner: "王健" },
-  { icon: "OL", name: "三国杀OL", appid: "10100002", ext: "", appeal: true, recover: true, freeze: false, time: "2025-05-18 20:18:25", owner: "系统" },
-  { icon: "将", name: "三国杀名将传", appid: "10100005", ext: "", appeal: true, recover: false, freeze: true, time: "2025-05-12 11:52:41", owner: "系统" },
-  { icon: "西", name: "自在西游", appid: "10100032", ext: "", appeal: false, recover: true, freeze: true, time: "2025-05-08 09:36:20", owner: "王健" },
-  { icon: "海", name: "指间山海", appid: "10100042", ext: "", appeal: true, recover: true, freeze: false, time: "2025-05-06 17:28:03", owner: "系统" },
-  { icon: "觉", name: "三国杀武将觉醒", appid: "10100080", ext: "", appeal: true, recover: false, freeze: true, time: "2025-04-30 15:12:09", owner: "系统" },
-  { icon: "欢", name: "欢乐三国杀", appid: "10100031", ext: "", appeal: false, recover: true, freeze: true, time: "2025-04-24 13:45:18", owner: "王健" }
+  { icon: "杀", name: "三国杀移动版", appid: "10100001", ext: "+2", languages: ["简中", "繁中"], orderQuery: true, recover: true, time: "2025-05-28 14:01:57", owner: "系统" },
+  { icon: "策", name: "三国杀一将成名", appid: "10100011", ext: "", languages: ["简中", "繁中"], orderQuery: true, recover: true, time: "2025-05-21 10:16:34", owner: "王健" },
+  { icon: "OL", name: "三国杀OL", appid: "10100002", ext: "", languages: ["简中", "繁中"], orderQuery: true, recover: true, time: "2025-05-18 20:18:25", owner: "系统" },
+  { icon: "将", name: "三国杀名将传", appid: "10100005", ext: "", languages: ["简中", "繁中"], orderQuery: true, recover: true, time: "2025-05-12 11:52:41", owner: "系统" },
+  { icon: "西", name: "自在西游", appid: "10100032", ext: "", languages: ["简中", "繁中"], orderQuery: true, recover: true, time: "2025-05-08 09:36:20", owner: "王健" },
+  { icon: "海", name: "指间山海", appid: "10100042", ext: "", languages: ["简中", "繁中"], orderQuery: true, recover: true, time: "2025-05-06 17:28:03", owner: "系统" },
+  { icon: "觉", name: "三国杀武将觉醒", appid: "10100080", ext: "", languages: ["简中", "繁中"], orderQuery: true, recover: true, time: "2025-04-30 15:12:09", owner: "系统" },
+  { icon: "欢", name: "欢乐三国杀", appid: "10100031", ext: "", languages: ["简中", "繁中"], orderQuery: true, recover: true, time: "2025-04-24 13:45:18", owner: "王健" },
+  { icon: "焰", name: "怒焰三国杀", appid: "10100004", ext: "", languages: ["简中", "繁中"], orderQuery: true, recover: true, time: "2025-04-18 20:18:25", owner: "系统" },
+  { icon: "狼", name: "狼人对决", appid: "10100001", ext: "", languages: ["简中", "繁中"], orderQuery: true, recover: true, time: "2025-04-10 16:02:37", owner: "系统" }
+];
+
+const supportedLanguages = ["简中", "繁中", "英语", "韩语", "泰语", "越南语"];
+let selectedLanguages = ["简中", "繁中", "英语"];
+let topMenus = [
+  { name: "支付中心", url: "https://platform.dobest.com/#/system/sdk/subject", languages: ["简中", "繁中"] },
+  { name: "客服中心", url: "https://platform.dobest.com/#/system/sdk/subject", languages: ["简中", "繁中"] },
+  { name: "关于我们", url: "https://platform.dobest.com/#/system/sdk/subject", languages: ["简中", "英语"] },
+  { name: "人才招聘", url: "https://platform.dobest.com/#/system/sdk/subject", languages: ["简中", "繁中"] }
+];
+let footerMenus = [
+  { name: "用户协议", url: "https://platform.dobest.com/#/system/sdk/subject", languages: ["简中", "繁中"] },
+  { name: "隐私政策", url: "https://platform.dobest.com/#/system/sdk/subject", languages: ["简中", "繁中"] },
+  { name: "退款政策", url: "https://platform.dobest.com/#/system/sdk/subject", languages: ["简中", "英语"] },
+  { name: "cookies政策", url: "https://platform.dobest.com/#/system/sdk/subject", languages: ["简中", "繁中"] }
 ];
 
 let protocols = [
@@ -47,15 +67,83 @@ let faqs = [
 ];
 
 const moduleMeta = {
+  site: ["网站信息", ""],
+  ability: ["账号能力", "功能开关直接影响账号中心内提供给玩家的能力类型"],
+  game: ["游戏配置", ""],
   brand: ["品牌与合规", "配置账号中心前台品牌露出、备案版权和协议入口"],
   passport: ["通行证能力", "从顶部下沉到账户中心内部，按能力卡片配置"],
-  game: ["游戏配置", "账号申诉、账号找回、账号冻结使用开启/关闭状态卡片"],
   appeal: ["账号申诉", "配置账号中心申诉条款、跳转链接和申诉须知"],
   cancel: ["账号注销", "保留账号注销配置入口，字段待业务规则确认后补充"],
   help: ["问题帮助", ""]
 };
 
-let currentModule = "brand";
+const domainMenuItems = [
+  "通行证",
+  "惠方/行为日志",
+  "防沉迷",
+  "GSSDK",
+  "H5SDK",
+  "版署域名"
+];
+
+const domainConfigGroups = [
+  {
+    title: "核心域名:",
+    fields: [
+      { label: "主域名", value: "https://sdkcore.yokagames.com" },
+      { label: "备用名", value: "https://sdkcore.yokagames.com" }
+    ]
+  },
+  {
+    title: "非核心域名:",
+    fields: [
+      { label: "主域名", value: "https://sdknoncore.yokagames.com" },
+      { label: "备用名", value: "https://sdknoncore.yokagames.com" }
+    ]
+  },
+  {
+    title: "CAID域名:",
+    fields: [
+      { label: "域名", value: "https://sdknoncore.yokagames.com" }
+    ]
+  },
+  {
+    title: "广告域名:",
+    fields: [
+      { label: "域名", value: "https://sdk-ad.dobest.cn" }
+    ]
+  }
+];
+
+const regionConfigs = {
+  overseas: {
+    label: "海外",
+    subjects,
+    defaultModule: "site",
+    modules: [
+      ["site", "网站信息"],
+      ["ability", "账号能力"],
+      ["game", "游戏配置"]
+    ]
+  },
+  domestic: {
+    label: "国内",
+    subjects: domesticSubjects,
+    defaultModule: "brand",
+    modules: [
+      ["brand", "品牌与合规"],
+      ["passport", "通行证能力"],
+      ["appeal", "账号申诉"],
+      ["cancel", "账号注销"],
+      ["game", "游戏配置"],
+      ["help", "问题帮助"]
+    ]
+  }
+};
+
+let currentRegion = "domestic";
+let currentConfigType = "domain";
+let currentModule = regionConfigs[currentRegion].defaultModule;
 let pendingModalAction = null;
 let draggedGameIndex = null;
 let pendingGameDropIndex = null;
@@ -110,8 +198,106 @@ function hideModal() {
   document.getElementById("modalMask").setAttribute("aria-hidden", "true");
 }
 
+function getCurrentSubjects() {
+  return regionConfigs[currentRegion].subjects;
+}
+
+function renderRegionControls() {
+  const config = regionConfigs[currentRegion];
+  const regionSelect = document.getElementById("regionSelect");
+  const regionFilter = document.getElementById("regionFilter");
+  regionSelect.innerHTML = `${config.label}<span class="caret dark"></span>`;
+  regionSelect.setAttribute("aria-expanded", "false");
+  document.getElementById("regionMenu").classList.remove("is-open");
+  document.querySelectorAll("#regionMenu [data-region]").forEach((item) => {
+    item.classList.toggle("active", item.dataset.region === currentRegion);
+  });
+  regionFilter.innerHTML = `<option>${config.label}</option>`;
+}
+
+function renderModuleMenu() {
+  const modules = regionConfigs[currentRegion].modules;
+  document.getElementById("moduleMenu").innerHTML = modules.map(([key, label]) => (
+    `<button class="module-item ${key === currentModule ? "active" : ""}" data-module="${key}">${label}</button>`
+  )).join("");
+}
+
+function renderConfigTabs() {
+  document.querySelectorAll(".tabs .tab[data-config-type]").forEach((tab) => {
+    tab.classList.toggle("active", tab.dataset.configType === currentConfigType);
+  });
+}
+
+function renderDomainConfig() {
+  const passportDomainLabel = `${regionConfigs[currentRegion].label}通行证`;
+  const menuItems = domainMenuItems.map((item, index) => index === 0 ? passportDomainLabel : item);
+  return `<div class="domain-config-panel">
+    <nav class="domain-menu" aria-label="域名配置项">
+      ${menuItems.map((item, index) => (
+        `<button class="domain-menu-item ${index === 0 ? "active" : ""}" type="button">${item}</button>`
+      )).join("")}
+    </nav>
+    <div class="domain-form-panel">
+      <div class="module-heading domain-heading">
+        <span class="section-bar"></span>
+        <h2>${passportDomainLabel}</h2>
+      </div>
+      <div class="domain-form">
+        ${domainConfigGroups.map((group) => `<section class="domain-field-group">
+          <h3>${group.title}</h3>
+          <div class="domain-field-grid ${group.fields.length === 1 ? "single" : ""}">
+            ${group.fields.map((field) => `<label class="domain-field">
+              <span>${field.label}<i class="info-dot">i</i></span>
+              <input value="${escapeHtml(field.value)}" />
+            </label>`).join("")}
+          </div>
+        </section>`).join("")}
+      </div>
+    </div>
+  </div>`;
+}
+
+function renderConfigContent() {
+  renderConfigTabs();
+  const isDomain = currentConfigType === "domain";
+  document.getElementById("domainConfigContent").classList.toggle("hidden", !isDomain);
+  document.getElementById("accountConfigContent").classList.toggle("hidden", isDomain);
+  if (isDomain) {
+    document.getElementById("domainConfigContent").innerHTML = renderDomainConfig();
+  } else {
+    renderModuleMenu();
+    renderModule(currentModule);
+  }
+}
+
+function updateDetailSubject(index = 0) {
+  const subject = getCurrentSubjects()[index] || getCurrentSubjects()[0];
+  if (!subject) return;
+  document.getElementById("detailSubjectName").textContent = subject[1];
+  document.getElementById("detailAccountId").textContent = subject[0];
+  document.getElementById("detailOwner").textContent = subject[6];
+  document.getElementById("detailUpdateTime").textContent = subject[5];
+  document.querySelector(".upload-tile span").textContent = subject[3] || "＋";
+}
+
+function switchRegion(region) {
+  if (!regionConfigs[region] || currentRegion === region) {
+    renderRegionControls();
+    return;
+  }
+  currentRegion = region;
+  currentModule = regionConfigs[currentRegion].defaultModule;
+  renderRegionControls();
+  renderSubjects();
+  updateDetailSubject(0);
+  if (document.getElementById("detailView").classList.contains("is-active")) {
+    renderConfigContent();
+  }
+  showToast(`已切换到${regionConfigs[currentRegion].label}主体`);
+}
+
 function renderSubjects() {
-  const rows = subjects.map(([id, name, account, logo, projects, time, owner]) => {
+  const rows = getCurrentSubjects().map(([id, name, account, logo, projects, time, owner], index) => {
     const logoCell = logo ? `<span class="logo-mini">${logo}</span>` : `<span class="logo-mini" style="background:#d8dde7;color:#6b7280">--</span>`;
     return `<tr>
       <td>${id}</td>
@@ -121,7 +307,7 @@ function renderSubjects() {
       <td title="${escapeHtml(projects)}">${projects}</td>
       <td>${time}</td>
       <td>${owner}</td>
-      <td><div class="action-links"><button class="btn link view-subject">查看</button><button class="btn link copy-subject" disabled>复制</button></div></td>
+      <td><div class="action-links"><button class="btn link view-subject" data-subject-index="${index}">查看</button><button class="btn link copy-subject" disabled>复制</button></div></td>
     </tr>`;
   }).join("");
   document.getElementById("subjectRows").innerHTML = rows;
@@ -130,18 +316,72 @@ function renderSubjects() {
 function setView(view) {
   document.getElementById("listView").classList.toggle("is-active", view === "list");
   document.getElementById("detailView").classList.toggle("is-active", view === "detail");
-  if (view === "detail") renderModule(currentModule);
+  if (view === "detail") {
+    renderConfigContent();
+  }
 }
 
 function heading(moduleKey) {
   const [title, hint] = moduleMeta[moduleKey];
-  const info = moduleKey === "passport" ? `<span class="info-dot" title="${hint}">i</span>` : "";
+  const info = moduleKey === "passport" || moduleKey === "ability" ? `<span class="info-dot" title="${hint}">i</span>` : "";
   return `<div class="module-heading">
     <span class="section-bar"></span>
     <h2>${title}</h2>
     ${info}
     ${hint ? `<span class="hint">${hint}</span>` : ""}
   </div>`;
+}
+
+function renderSite() {
+  return `${heading("site")}
+    <div class="site-form">
+      <div class="brand-section-title">支持语言:</div>
+      <div class="language-checks">
+        ${supportedLanguages.map((lang) => `<label><input type="checkbox" data-action="toggle-language" data-lang="${lang}" ${selectedLanguages.includes(lang) ? "checked" : ""} />${lang}</label>`).join("")}
+      </div>
+
+      <div class="brand-section-title">品牌LOGO:</div>
+      <div class="logo-config-grid">
+        ${logoConfig("顶部LOGO")}
+        ${logoConfig("底部LOGO")}
+      </div>
+
+      <div class="brand-section-title">顶部导航菜单:</div>
+      ${menuTable(topMenus, "top")}
+      <button class="full-add-button" data-action="add-top-menu">+ 添加导航菜单</button>
+
+      <div class="brand-section-title">底部协议入口:</div>
+      ${menuTable(footerMenus, "footer")}
+      <button class="full-add-button" data-action="add-footer-menu">+ 添加导航菜单</button>
+
+      <div class="brand-section-title">底部版权信息:</div>
+      ${brandFieldRow("展示文案", "© 2024 Playbest All Rights Reserved.", "跳转链接", "")}
+    </div>`;
+}
+
+function menuTable(items, type) {
+  const firstColumn = type === "top" ? "导航菜单文案" : "协议展示文案";
+  return `<div class="table-wrap site-table-wrap">
+    <table class="data-table site-table">
+      <thead><tr><th></th><th>${firstColumn}</th><th>跳转链接</th><th>多语言配置</th><th>操作</th></tr></thead>
+      <tbody>${items.map((item, index) => menuRow(item, index, type)).join("")}</tbody>
+    </table>
+  </div>`;
+}
+
+function menuRow(item, index, type) {
+  return `<tr>
+    <td class="drag-cell" title="拖拽排序">⋮</td>
+    <td>${escapeHtml(item.name)}</td>
+    <td><a class="table-link" href="${escapeHtml(item.url)}">${escapeHtml(item.url)}</a></td>
+    <td>${languageBadges(item.languages)}</td>
+    <td><div class="action-links"><button class="btn link" data-action="edit-menu" data-type="${type}" data-index="${index}">编辑</button><button class="btn link danger-link" data-action="delete-menu" data-type="${type}" data-index="${index}">删除</button></div></td>
+  </tr>`;
+}
+
+function languageBadges(activeLanguages = []) {
+  const visibleLanguages = selectedLanguages.length ? selectedLanguages : supportedLanguages.slice(0, 3);
+  return `<span class="language-badges">${visibleLanguages.map((lang) => `<span class="language-badge ${activeLanguages.includes(lang) ? "active" : "inactive"}">${lang}</span>`).join("")}</span>`;
 }
 
 function renderBrand() {
@@ -201,41 +441,67 @@ function renderPassport() {
     <div class="passport-grid">
       ${abilityCard({
         icon: "lock",
-        title: "账密登录",
+        title: "设置密码",
         sub: "开启后，账号中心将支持密码重置、设置和修改功能",
-        rows: [{ label: "账密登录", on: false }]
+        rows: [{ label: "设置密码", on: false }]
       })}
       ${abilityCard({
         icon: "phone",
         title: "绑定手机",
-        sub: "开启后，账号中心将支持手机绑定、换绑及通过手机找回账号名",
-        rows: [{ label: "登录手机", on: true }, { label: "安全手机", on: true }]
+        sub: "开启后，账号中心将支持手机绑定及通过手机找回账号名",
+        rows: [{ label: "绑定手机", on: true }],
+        checks: ["登录手机", "安全手机"]
       })}
       ${abilityCard({
         icon: "mail",
         title: "绑定邮箱",
-        sub: "开启后，账号中心将支持邮箱绑定、换绑及通过邮箱找回账号名",
-        rows: [{ label: "安全邮箱", on: true }]
+        sub: "开启后，账号中心将支持邮箱绑定及通过邮箱找回账号名",
+        rows: [{ label: "绑定邮箱", on: true }]
       })}
-    </div>
-    <div class="note-block">
-      <span class="note-icon">${icon("bulb")}</span>
-      <strong>提示</strong>
-      <span>功能开关直接影响账号中心内提供给玩家的能力类型。</span>
+    </div>`;
+}
+
+function renderAbility() {
+  return `${heading("ability")}
+    <div class="passport-grid overseas-ability-grid">
+      ${abilityCard({
+        icon: "lock",
+        title: "设置密码",
+        sub: "开启后，账号中心将支持密码重置、设置和修改功能",
+        rows: [{ label: "设置密码", on: false }]
+      })}
+      ${abilityCard({
+        icon: "phone",
+        title: "绑定手机",
+        sub: "开启后，账号中心将支持手机绑定及通过手机找回账号名",
+        rows: [{ label: "绑定手机", on: true }]
+      })}
+      ${abilityCard({
+        icon: "mail",
+        title: "绑定邮箱",
+        sub: "开启后，账号中心将支持邮箱绑定及通过邮箱找回账号名",
+        rows: [{ label: "绑定邮箱", on: true }]
+      })}
     </div>`;
 }
 
 function abilityCard(data) {
+  const primaryRow = data.rows[0] || { label: data.title, on: false };
+  const checks = data.checks || [];
   return `<article class="ability-card">
-    <div class="ability-head">
-      <span class="ability-icon">${icon(data.icon)}</span>
-      <div class="ability-title">
-        <h3>${data.title}</h3>
-        ${data.tag ? `<span class="tag">${data.tag}</span>` : ""}
+    <div class="ability-card-top">
+      <div class="ability-head">
+        <span class="ability-icon">${icon(data.icon)}</span>
+        <div class="ability-title">
+          <h3>${data.title}</h3>
+          ${data.tag ? `<span class="tag">${data.tag}</span>` : ""}
+        </div>
       </div>
+      <button class="switch${primaryRow.on ? " is-on" : ""}${primaryRow.disabled ? " is-disabled" : ""}" ${primaryRow.disabled ? "disabled" : ""} aria-label="${primaryRow.label}"></button>
     </div>
     <div class="ability-desc"><small title="${escapeHtml(data.sub)}">${data.sub}</small></div>
-    <div class="ability-settings">${data.rows.map(settingRow).join("")}</div>
+    <div class="ability-divider"></div>
+    ${checks.length ? `<div class="ability-checks">${checks.map((label) => `<label><input type="checkbox" checked disabled />${label}</label>`).join("")}</div>` : ""}
   </article>`;
 }
 
@@ -249,36 +515,37 @@ function settingRow(row) {
 }
 
 function renderGame() {
+  const isOverseas = currentRegion === "overseas";
   return `${heading("game")}
     <div class="table-wrap game-table-wrap">
-      <table class="data-table game-table">
+      <table class="data-table game-table ${isOverseas ? "overseas-game-table" : "domestic-game-table"}">
         <thead>
           <tr>
             <th></th>
             <th>游戏</th>
+            ${isOverseas ? "<th>多语言配置</th>" : ""}
             <th>appid</th>
-            <th>账号申诉</th>
+            <th>订单查询</th>
             <th>账号找回</th>
-            <th>账号冻结</th>
             <th>最近更新时间</th>
             <th>最近更新人</th>
             <th>操作</th>
           </tr>
         </thead>
-        <tbody>${games.map(gameRow).join("")}</tbody>
+        <tbody>${games.map((game, index) => gameRow(game, index, isOverseas)).join("")}</tbody>
       </table>
     </div>
     <button class="full-add-button" data-action="add-game">+ 添加游戏</button>`;
 }
 
-function gameRow(game, index) {
+function gameRow(game, index, isOverseas = currentRegion === "overseas") {
   return `<tr data-game-index="${index}">
     <td class="drag-cell" draggable="true" title="拖拽排序" aria-label="拖拽排序">⋮</td>
     <td><span class="game-name"><span class="game-icon">${game.icon}</span><span>${game.name}</span></span></td>
+    ${isOverseas ? `<td>${languageBadges(game.languages)}</td>` : ""}
     <td>${game.appid}${game.ext ? `<span class="mini-tag">${game.ext}</span>` : ""}</td>
-    <td>${statusCard(game.appeal)}</td>
+    <td>${statusCard(game.orderQuery)}</td>
     <td>${statusCard(game.recover)}</td>
-    <td>${statusCard(game.freeze)}</td>
     <td>${game.time}</td>
     <td>${game.owner}</td>
     <td><div class="action-links"><button class="btn link" data-action="edit-game" data-index="${index}">编辑</button><button class="btn link danger-link" data-action="delete-game" data-index="${index}">删除</button></div></td>
@@ -362,7 +629,10 @@ function faqRow(item, index) {
 }
 
 function renderModule(moduleKey) {
-  const renderers = { brand: renderBrand, passport: renderPassport, game: renderGame, appeal: renderAppeal, cancel: renderCancel, help: renderHelp };
+  const renderers = { site: renderSite, ability: renderAbility, game: renderGame, brand: renderBrand, passport: renderPassport, appeal: renderAppeal, cancel: renderCancel, help: renderHelp };
+  if (!renderers[moduleKey]) {
+    moduleKey = regionConfigs[currentRegion].defaultModule;
+  }
   currentModule = moduleKey;
   document.getElementById("moduleContent").innerHTML = renderers[moduleKey]();
   document.querySelectorAll(".module-item").forEach((item) => {
@@ -374,6 +644,7 @@ function gameForm(game = {}) {
   const selectedProject = escapeHtml(game.project || game.name || "");
   const appleEnabled = game.appleVerify ?? true;
   const appleFieldClass = appleEnabled ? "" : " is-hidden";
+  const isOverseas = currentRegion === "overseas";
   return `<div class="modal-tip">如未找到所需项目，请联系SDK部门进行添加</div>
   <div class="modal-form game-modal-form">
     <div class="modal-field-row">
@@ -387,12 +658,17 @@ function gameForm(game = {}) {
       <label for="modalGameName">展示游戏名 <b>*</b><span class="modal-info">i</span></label>
       <input id="modalGameName" value="${escapeHtml(game.name || "")}" placeholder="请输入展示游戏名称" />
     </div>
+    ${isOverseas ? `<div class="modal-field-row">
+      <label>多语言配置 <b>*</b><span class="modal-info">i</span></label>
+      <div class="modal-checks">
+        ${supportedLanguages.slice(0, 3).map((lang) => `<label><input class="modal-game-lang" type="checkbox" value="${lang}" ${(game.languages || ["简中", "繁中"]).includes(lang) ? "checked" : ""} />${lang}</label>`).join("")}
+      </div>
+    </div>` : ""}
     <div class="modal-field-row">
       <label>关联功能 <b>*</b><span class="modal-info">i</span></label>
       <div class="modal-checks">
-        <label><input id="modalGameAppeal" type="checkbox" ${game.appeal ?? true ? "checked" : ""} />账号申诉</label>
-        <label><input id="modalGameRecover" type="checkbox" ${game.recover ?? false ? "checked" : ""} />账号找回</label>
-        <label><input id="modalGameFreeze" type="checkbox" ${game.freeze ?? false ? "checked" : ""} />账号冻结</label>
+        <label><input id="modalGameOrderQuery" type="checkbox" ${game.orderQuery ?? true ? "checked" : ""} />订单查询</label>
+        <label><input id="modalGameRecover" type="checkbox" ${game.recover ?? true ? "checked" : ""} />账号找回</label>
       </div>
     </div>
     <div class="modal-field-row">
@@ -439,9 +715,11 @@ function readGameForm(oldGame = {}) {
     project,
     appid: appid || oldGame.appid || "请输入appid",
     ext: oldGame.ext || "",
-    appeal: document.getElementById("modalGameAppeal").checked,
+    languages: currentRegion === "overseas"
+      ? [...document.querySelectorAll(".modal-game-lang:checked")].map((item) => item.value)
+      : oldGame.languages || [],
+    orderQuery: document.getElementById("modalGameOrderQuery").checked,
     recover: document.getElementById("modalGameRecover").checked,
-    freeze: document.getElementById("modalGameFreeze").checked,
     appleVerify,
     appleBundle: appleVerify ? document.getElementById("modalAppleBundle").value.trim() : "",
     keyId: appleVerify ? document.getElementById("modalKeyId").value.trim() : "",
@@ -460,6 +738,86 @@ function addProtocolRow() {
   protocols.push({ name: "", url: "" });
   renderModule("brand");
   showToast("已添加一行自定义协议");
+}
+
+function languageDisplayInputs(item) {
+  const displayValues = item.languageDisplays || {};
+  const languages = selectedLanguages.length ? selectedLanguages : supportedLanguages.slice(0, 3);
+  return `<div class="modal-language-display">
+    ${languages.map((lang) => `<input class="modal-language-display-input" data-lang="${escapeHtml(lang)}" value="${escapeHtml(displayValues[lang] || "")}" placeholder="请输入${escapeHtml(lang)}语言展示" />`).join("")}
+  </div>`;
+}
+
+function readLanguageDisplays() {
+  return [...document.querySelectorAll(".modal-language-display-input")].reduce((result, input) => {
+    result[input.dataset.lang] = input.value.trim();
+    return result;
+  }, {});
+}
+
+function menuModalForm(item = {}) {
+  return `<div class="modal-form">
+    <div class="modal-field-row"><label>展示文案 <b>*</b></label><input id="modalMenuName" value="${escapeHtml(item.name || "")}" placeholder="请输入展示文案" /></div>
+    <div class="modal-field-row"><label>跳转链接</label><input id="modalMenuUrl" value="${escapeHtml(item.url || "")}" placeholder="请输入跳转链接" /></div>
+    <div class="modal-field-row modal-field-row-stacked"><label>多语言展示</label>${languageDisplayInputs(item)}</div>
+  </div>`;
+}
+
+function readMenuModalForm(fallbackName = "") {
+  return {
+    name: document.getElementById("modalMenuName").value.trim() || fallbackName,
+    url: document.getElementById("modalMenuUrl").value.trim(),
+    languages: [...selectedLanguages],
+    languageDisplays: readLanguageDisplays()
+  };
+}
+
+function openAddMenuModal(type) {
+  const target = type === "top" ? topMenus : footerMenus;
+  const fallbackName = type === "top" ? "新导航菜单" : "新协议入口";
+  showModal({
+    title: type === "top" ? "添加导航菜单" : "添加协议入口",
+    body: menuModalForm({ languages: [...selectedLanguages], languageDisplays: {} }),
+    confirmText: "确认",
+    onConfirm: () => {
+      target.push(readMenuModalForm(fallbackName));
+      renderModule("site");
+      showToast(type === "top" ? "已添加顶部导航菜单" : "已添加底部协议入口");
+      hideModal();
+    }
+  });
+}
+
+function openEditMenuModal(type, index) {
+  const target = type === "top" ? topMenus : footerMenus;
+  const item = target[index];
+  showModal({
+    title: type === "top" ? "编辑导航菜单" : "编辑协议入口",
+    body: menuModalForm(item),
+    confirmText: "确认",
+    onConfirm: () => {
+      target[index] = readMenuModalForm(item.name);
+      renderModule("site");
+      showToast("已更新菜单配置");
+      hideModal();
+    }
+  });
+}
+
+function openDeleteMenuModal(type, index) {
+  const target = type === "top" ? topMenus : footerMenus;
+  showModal({
+    title: "确认删除",
+    body: `<p>请确认是否删除该配置项。</p>`,
+    confirmText: "确认",
+    mode: "compact",
+    onConfirm: () => {
+      target.splice(index, 1);
+      renderModule("site");
+      showToast("已删除菜单配置");
+      hideModal();
+    }
+  });
 }
 
 function addFaqRow() {
@@ -597,10 +955,42 @@ function bindEvents() {
       return;
     }
 
+    const regionSelect = event.target.closest("#regionSelect");
+    if (regionSelect) {
+      const menu = document.getElementById("regionMenu");
+      const expanded = !menu.classList.contains("is-open");
+      menu.classList.toggle("is-open", expanded);
+      regionSelect.setAttribute("aria-expanded", String(expanded));
+      return;
+    }
+
+    const regionOption = event.target.closest("#regionMenu [data-region]");
+    if (regionOption) {
+      switchRegion(regionOption.dataset.region);
+      return;
+    }
+
+    if (!event.target.closest(".region-switcher")) {
+      document.getElementById("regionMenu").classList.remove("is-open");
+      document.getElementById("regionSelect").setAttribute("aria-expanded", "false");
+    }
+
     const viewSubject = event.target.closest(".view-subject");
     if (viewSubject) {
-      currentModule = "brand";
+      updateDetailSubject(Number(viewSubject.dataset.subjectIndex || 0));
+      currentConfigType = "domain";
+      currentModule = regionConfigs[currentRegion].defaultModule;
       setView("detail");
+      return;
+    }
+
+    const configTab = event.target.closest(".tab[data-config-type]");
+    if (configTab) {
+      currentConfigType = configTab.dataset.configType;
+      if (currentConfigType === "account" && !regionConfigs[currentRegion].modules.some(([key]) => key === currentModule)) {
+        currentModule = regionConfigs[currentRegion].defaultModule;
+      }
+      renderConfigContent();
       return;
     }
 
@@ -613,6 +1003,18 @@ function bindEvents() {
     const action = event.target.closest("[data-action]");
     if (action) {
       const actionName = action.dataset.action;
+      if (actionName === "toggle-language") {
+        const lang = action.dataset.lang;
+        selectedLanguages = action.checked
+          ? [...new Set([...selectedLanguages, lang])]
+          : selectedLanguages.filter((item) => item !== lang);
+        renderModule("site");
+        showToast("已更新支持语言，请点击保存提交");
+      }
+      if (actionName === "add-top-menu") openAddMenuModal("top");
+      if (actionName === "add-footer-menu") openAddMenuModal("footer");
+      if (actionName === "edit-menu") openEditMenuModal(action.dataset.type, Number(action.dataset.index));
+      if (actionName === "delete-menu") openDeleteMenuModal(action.dataset.type, Number(action.dataset.index));
       if (actionName === "add-protocol") addProtocolRow();
       if (actionName === "add-faq") addFaqRow();
       if (actionName === "add-game") openAddGameModal();
@@ -746,6 +1148,8 @@ function bindEvents() {
   });
 }
 
+renderRegionControls();
 renderSubjects();
+updateDetailSubject(0);
 applyStaticIcons();
 bindEvents();

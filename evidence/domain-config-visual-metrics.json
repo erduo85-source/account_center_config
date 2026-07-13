@@ -1,0 +1,16 @@
+{
+  "reference": "evidence/domain-config-figma-mcp-998-8322.png",
+  "local": "evidence/domain-config-local-1912.png",
+  "comparison_size": [
+    1912,
+    1140
+  ],
+  "mean_abs_delta": 6.1042,
+  "rms_delta": 31.2806,
+  "pixel_delta_percent": {
+    "gt_10": 5.6664,
+    "gt_20": 4.8746,
+    "gt_40": 3.4521,
+    "gt_80": 2.8579
+  }
+}
